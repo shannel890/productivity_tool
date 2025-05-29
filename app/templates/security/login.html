@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Chatbot</title>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .login-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.25rem;
+            margin-top: 0.25rem;
+        }
+        button {
+            width: 100%;
+            padding: 0.5rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #2563eb;
+        }
+        .register-link {
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .register-link a {
+            color: #3b82f6;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2 style="text-align: center; margin-bottom: 2rem;">Login</h2>
+        <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+            {{ login_user_form.hidden_tag() }}
+            <div class="form-group">
+                {{ login_user_form.email.label }}
+                {{ login_user_form.email(class_="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ login_user_form.password.label }}
+                {{ login_user_form.password(class_="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ login_user_form.remember.label }}
+                {{ login_user_form.remember() }}
+            </div>
+            <button type="submit">Login</button>
+        </form>
+        <div class="register-link">
+            <p>Don't have an account? <a href="{{ url_for_security('register') }}">Register</a></p>
+        </div>
+    </div>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
